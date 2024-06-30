@@ -1,6 +1,6 @@
 {
     "name": "react-native-range-custom-slider",
-    "version": "1.0.3",
+    "version": "1.0.5",
     "description": "This is range custom slider for react native",
     "main": "index.js",
     "scripts": {
@@ -12,5 +12,9 @@
     "peerDependencies": {
         "react": "18.2.0",
         "react-native": "0.74.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/shamandeep03/custom-slider"
     }
 }
