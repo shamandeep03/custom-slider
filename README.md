@@ -1,50 +1,84 @@
-# Welcome to your Expo app 👋
+# React Native Custom Range Slider
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+`react-native-range-custom-slider` is a customizable and easy-to-use range slider component for React Native. It allows you to select a value from a specified range by dragging a thumb along a track.
 
-## Get started
 
-1. Install dependencies
+<p align="center">
 
-   ```bash
-   npm install
-   ```
+  <img src="./demo.gif" width="300" border="1px" style="margin-top: 50px"/>
 
-2. Start the app
+</p>
 
-   ```bash
-    npx expo start
-   ```
 
-In the output, you'll find options to open the app in a
+## Installation
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+To install the package, use npm or yarn:
 
 ```bash
-npm run reset-project
+npm install react-native-range-custom-slider
+
+yarn add react-native-range-custom-slider
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+##Usage
 
-## Learn more
+```JSX
 
-To learn more about developing your project with Expo, look at the following resources:
+import React, { useState } from 'react';
+import { View, Text } from 'react-native';
+import CustomSlider from 'react-native-range-custom-slider';
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+const App = () => {
+    const [sliderValue, setSliderValue] = useState(50);
 
-## Join the community
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Slider Value: {sliderValue}</Text>
+            <CustomSlider
+                value={sliderValue}
+                minimumValue={0}
+                maximumValue={100}
+                step={1}
+                onValueChange={(value) => setSliderValue(value)}
+                minimumTrackTintColor="blue"
+                maximumTrackTintColor="grey"
+                thumbStyle={{ backgroundColor: 'blue' }}
+                trackStyle={{ height: 10 }}
+                style={{ width: 300 }}
+            />
+        </View>
+    );
+};
 
-Join our community of developers creating universal apps.
+export default App;
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```
+## API
+
+| Prop                     | Type       | Default      | Description                                                           |
+|--------------------------|------------|--------------|-----------------------------------------------------------------------|
+| `value`                  | `number`   | `0`          | The current value of the slider.                                      |
+| `minimumValue`           | `number`   | `1`          | The minimum value of the slider.                                      |
+| `maximumValue`           | `number`   | `100`        | The maximum value of the slider.                                      |
+| `step`                   | `number`   | `1`          | The step value of the slider.                                         |
+| `onValueChange`          | `function` | `undefined`  | Callback function called when the slider value changes.               |
+| `minimumTrackTintColor`  | `string`   | `undefined`  | The color of the track to the left of the slider thumb.               |
+| `maximumTrackTintColor`  | `string`   | `undefined`  | The color of the track to the right of the slider thumb.              |
+| `thumbStyle`             | `object`   | `{}`         | Style object for customizing the thumb.                               |
+| `trackStyle`             | `object`   | `{}`         | Style object for customizing the track.                               |
+| `style`                  | `object`   | `{}`         | Style object for customizing the container.                           |
+| `disabled`               | `boolean`  | `false`      | If true, the slider is disabled and the thumb cannot be moved.        |
+| `thumbProps`             | `object`   | `undefined`  | Props for customizing the thumb, including custom children elements.  |
+
+
+Contributing
+
+You are interested and want to contribute? Awesome, just consider the following steps:
+
+1. Fork this repository.
+2. Add and test the fixes/improvements you worked on to a seperate branch.
+3. Submit your pull request(PR).
+
+Author
+
+This package is maintained by justcodi22.
